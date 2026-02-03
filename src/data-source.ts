@@ -18,4 +18,7 @@ export const AppDataSource = new DataSource({
     entities: [User, Post],
     migrations: [],
     subscribers: [],
+    ssl: {
+        rejectUnauthorized: false
+    }
 })
