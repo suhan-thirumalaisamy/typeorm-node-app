@@ -1,7 +1,7 @@
 revolte:
   version: '1.0'
-  project: test-db-secret
-  appName: be-node
+  project: Test-webhook
+  appName: db-dump-check
   config:
     codeReview:
       summarize: true
