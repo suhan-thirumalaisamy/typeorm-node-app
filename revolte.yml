@@ -22,6 +22,7 @@ revolte:
           properties:
             health: /health
             port: 8080
+            loadBalancerMode: dedicated
             variables:
               BASE_URL: /api/v1
               DATABASE_URL: '#{db.dbUrl}'
