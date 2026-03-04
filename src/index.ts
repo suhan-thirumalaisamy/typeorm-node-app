@@ -58,6 +58,22 @@ AppDataSource.initialize().then(async () => {
         return res.send(results)
     })
 
+    app.get("/about", (req: Request, res: Response) => {
+        res.json({ title: "About", message: "This is a sample app." })
+    })
+
+    app.get("/contact", (req: Request, res: Response) => {
+        res.json({ email: "contact@example.com" })
+    })
+
+    app.get("/version", (req: Request, res: Response) => {
+        res.json({ version: "1.0.0" })
+    })
+
+    app.get("/ping", (req: Request, res: Response) => {
+        res.send("pong")
+    })
+
     app.listen(8080, () => {
         console.log("Express server has started on port 3000. Open http://localhost:3000/users to see results")
     })
