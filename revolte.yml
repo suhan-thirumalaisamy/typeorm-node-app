@@ -11,27 +11,27 @@ revolte:
       command: npm run test
     alerts:
       web_service:
-        - cpu:
+        cpu:
           threshold: 70
           period: 1
-        - memory:
+        memory:
           threshold: 70
           period: 1
       database:
-        - cpu:
+        cpu:
           threshold: 80
           period: 1
-        - memory:
+        memory:
           threshold: 70
           period: 1
-        - storage:
+        storage:
           threshold: 80
           period: 1
       cache:
-        - cpu:
+        cpu:
           threshold: 80
           period: 1
-        - memory:
+        memory:
           threshold: 70
           period: 1
   env:
