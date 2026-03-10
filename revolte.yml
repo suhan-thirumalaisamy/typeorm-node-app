@@ -5,7 +5,7 @@ revolte:
   config:
     build:
       properties:
-        cpu: 2
+        cpu: 4
         memory: 8
     codeReview:
         summarize: true
