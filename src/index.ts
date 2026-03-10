@@ -46,7 +46,7 @@ AppDataSource.initialize().then(async () => {
         const user = await userRepository.findOneBy({ id: userId })
 
         if (!user) {
-            return res.status(404).json({ message: "User not found" })
+            return res.status(404).json({ message: "User not found!" })
         }
 
         const post = postRepository.create({
