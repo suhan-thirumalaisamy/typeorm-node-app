@@ -11,7 +11,7 @@ revolte:
         summarize: true
         suggestFixes: true
         commentStyle: Balanced
-    pipeline:
+    preBuild:
         testSuite:
           command: npm run test
     observerability:
