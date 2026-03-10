@@ -3,37 +3,43 @@ revolte:
   project: Test-webhook
   appName: db-dump-check
   config:
+    build:
+      properties:
+        cpu: 2
+        memory: 8
     codeReview:
-      summarize: true
-      suggestFixes: true
-      commentStyle: Balanced
-    testSuite:
-      command: npm run test
-    alerts:
-      web_service:
-        cpu:
-          threshold: 70
-          period: 1
-        memory:
-          threshold: 70
-          period: 1
-      database:
-        cpu:
-          threshold: 80
-          period: 1
-        memory:
-          threshold: 70
-          period: 1
-        storage:
-          threshold: 80
-          period: 1
-      cache:
-        cpu:
-          threshold: 80
-          period: 1
-        memory:
-          threshold: 70
-          period: 1
+        summarize: true
+        suggestFixes: true
+        commentStyle: Balanced
+    pipeline:
+        testSuite:
+          command: npm run test
+    observerability:
+      alerts:
+        web_service:
+          cpu:
+            threshold: 70
+            period: 1
+          memory:
+            threshold: 70
+            period: 1
+        database:
+          cpu:
+            threshold: 80
+            period: 1
+          memory:
+            threshold: 70
+            period: 1
+          storage:
+            threshold: 80
+            period: 1
+        cache:
+          cpu:
+            threshold: 80
+            period: 1
+          memory:
+            threshold: 70
+            period: 1
   env:
     staging:
       branch: staging
@@ -142,6 +148,11 @@ revolte:
     preview:
       codeReview: true
       testSuite: true
+      alerts:
+        enabled: true
+        actions:
+          email:
+            - suhan.thirumalai@rootquotient.com
       services:
         rid_1:
           type: WEB_SERVICE
