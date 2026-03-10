@@ -14,7 +14,7 @@ revolte:
     preBuild:
         testSuite:
           command: npm run test
-    observerability:
+    observability:
       alerts:
         web_service:
           cpu:
