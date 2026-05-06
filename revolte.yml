@@ -1,12 +1,15 @@
 revolte:
   version: '1.0'
-  project: test1
-  appName: test
+  project: demo1
+  appName: demoApp1
   config:
     codeReview:
       summarize: true
       suggestFixes: true
       commentStyle: Balanced
+  workflow:
+    developerWorkflow:
+      enabled: true
   env:
     staging:
       branch: staging
