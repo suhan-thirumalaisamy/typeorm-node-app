@@ -1,49 +1,19 @@
 revolte:
   version: '1.0'
-  project: Test-webhook
-  appName: db-dump-check
+  project: demo1
+  appName: demoApp1
   config:
     codeReview:
       summarize: true
       suggestFixes: true
       commentStyle: Balanced
-    testSuite:
-      command: npm run test
-    alerts:
-      web_service:
-        - cpu:
-          threshold: 70
-          period: 1
-        - memory:
-          threshold: 70
-          period: 1
-      database:
-        - cpu:
-          threshold: 80
-          period: 1
-        - memory:
-          threshold: 70
-          period: 1
-        - storage:
-          threshold: 80
-          period: 1
-      cache:
-        - cpu:
-          threshold: 80
-          period: 1
-        - memory:
-          threshold: 70
-          period: 1
+  workflow:
+    developerWorkflow:
+      enabled: true
   env:
     staging:
       branch: staging
       codeReview: true
-      testSuite: true
-      alerts:
-        enabled: true
-        actions:
-          email:
-            - suhan.thirumalai@rootquotient.com
       services:
         rid_1:
           type: WEB_SERVICE
@@ -75,7 +45,6 @@ revolte:
     qa:
       branch: qa
       codeReview: true
-      testSuite: true
       services:
         rid_1:
           type: WEB_SERVICE
@@ -84,6 +53,7 @@ revolte:
           properties:
             health: /health
             port: 8080
+            loadBalancerMode: dedicated
             variables:
               BASE_URL: /api/v1
               DATABASE_URL: '#{db.dbUrl}'
@@ -106,7 +76,6 @@ revolte:
     production:
       branch: main
       codeReview: true
-      testSuite: true
       services:
         rid_1:
           type: WEB_SERVICE
@@ -131,6 +100,14 @@ revolte:
               replica:
                 min: 1
                 max: 3
+              utilization:
+                cpu:
+                  target: 70
+                memory:
+                  target: 70
+              behavior:
+                scaleDown:
+                  stabilizationWindow: 300
         rid_2:
           type: DATABASE
           name: db
@@ -141,7 +118,6 @@ revolte:
             engine: postgres
     preview:
       codeReview: true
-      testSuite: true
       services:
         rid_1:
           type: WEB_SERVICE
@@ -150,6 +126,7 @@ revolte:
           properties:
             health: /health
             port: 8080
+            loadBalancerMode: dedicated
             variables:
               BASE_URL: /api/v1
               DATABASE_URL: '#{db.dbUrl}'
